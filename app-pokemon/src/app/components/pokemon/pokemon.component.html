@@ -1,0 +1,14 @@
+<h1>Pokédex</h1>
+<input type="text" [(ngModel)]="name">
+<button (click)="searchPokemonByName()">rechercher</button>
+<div class="pokemon__wrapper-search">
+  <p>{{name}}</p>
+  <img [src]="imageUrl"/>
+</div>
+
+<div *ngFor="let pokemon of pokemons | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalPokemon}">
+  <img [src]="pokemon.sprites.front_default" />
+  <p>{{pokemon.name}}</p>
+</div>
+
+<pagination-controls (pageChange)="page = $event; pokemons = []; getPokemon()"></pagination-controls>

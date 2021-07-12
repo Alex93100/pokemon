@@ -1,0 +1,15 @@
+Application:
+Page principale:
+1 ) liste des pokemons:
+20 premiers Pokemons + pagination
+( image + nom )
+Champ de recherche par nom en français
+Quand on clique sur un pokemon on arrive sur le détail sur une nouvelle page
+Application de filtre :
+filter par type;
+Sort par poids
+un champs de saisie de type number , à la sortie du champs , n’afficher que les pokemons qui ont un move dont la puissance est supérieur à ce champs.
+Radio: More Female, More Male
+on affiche les pokemons qui ont plus de 50% de chance de Pokemon
+3.
+choisir une lib ( chart.js , d3.js , highchart )de représentation graphique et representez la fréquence de rencontre du pokemon sélectionné et mettre la fréquence moyenne en évidence
