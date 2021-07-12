@@ -1,14 +1,35 @@
-<h1>Pokédex</h1>
-<input type="text" [(ngModel)]="name">
-<button (click)="searchPokemonByName()">rechercher</button>
-<div class="pokemon__wrapper-search">
-  <p>{{name}}</p>
-  <img [src]="imageUrl"/>
-</div>
+ <div class="pokemon">
+  <h1>Pokédex</h1>
+  <input type="text" [(ngModel)]="name">
+  <button (click)="searchPokemonByName()">rechercher</button>
+  <div class="pokemon__wrapper-search">
+    <p>{{name}}</p>
+    <img [src]="imageUrl"/>
+  </div>
 
-<div *ngFor="let pokemon of pokemons | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalPokemon}">
-  <img [src]="pokemon.sprites.front_default" />
-  <p>{{pokemon.name}}</p>
+  <div *ngFor="let pokemon of pokemons | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalPokemon}">
+    <img [src]="pokemon.sprites.front_default" />
+    <!-- {{pokemon.stats | json}} -->
+    <p>{{pokemon.name}}</p>
+    <div class="">
+      <span *ngFor="let types of pokemon.types" [ngClass]="types.type.name" class="types">
+        {{types.type.name}}
+      </span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+            <th colspan="2">Base Stats</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stats of pokemon.stats">
+          <td>{{stats.stat.name}}</td>
+          <td>{{stats.base_stat}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <pagination-controls (pageChange)="page = $event; pokemons = []; getPokemon()"></pagination-controls>

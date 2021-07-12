@@ -32,11 +32,13 @@ export class PokemonComponent implements OnInit {
     this.ApiPokemonService.getListPokemon( this.nbrsOfPokemonsPerPage, this.page + 0)
     .subscribe((pokemons: any) => {
       this.totalPokemon = pokemons.count;
+      console.log(this.pokemons);
+      console.log(this.totalPokemon);
       pokemons.results.forEach((result: any) => {
         this.ApiPokemonService.getPokemon(result.name)
         .subscribe((pokemon: any) => {
+          console.log('pokemon details :', pokemon);
           this.pokemons.push(pokemon);
-          console.log(pokemon.name);
         })
       });
     })

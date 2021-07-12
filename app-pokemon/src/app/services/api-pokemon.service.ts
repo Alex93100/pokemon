@@ -10,7 +10,7 @@ export class ApiPokemonService {
 
   constructor(private http : HttpClient) { }
 
-  getPokemon(name: string) {
+  getPokemon(name?: string) {
     return this.http.get(`${this.apiUrl}/${name}`);
   }
 
