@@ -7,9 +7,14 @@
     <img [src]="imageUrl"/>
   </div>
 
-  <div *ngFor="let pokemon of pokemons | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalPokemon}">
+  <div *ngIf="pokemons$ | async as pokemons">
+    {{pokemons.count}}
+    {{pokemons.results | json }}
+  </div>
+
+  <!-- <div *ngFor="let pokemon of pokemons | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalPokemon}">
     <img [src]="pokemon.sprites.front_default" />
-    <!-- {{pokemon.stats | json}} -->
+    {{pokemon.stats | json}}
     <p>{{pokemon.name}}</p>
     <div class="">
       <span *ngFor="let types of pokemon.types" [ngClass]="types.type.name" class="types">
@@ -29,7 +34,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div> -->
 </div>
 
-<pagination-controls (pageChange)="page = $event; pokemons = []; getPokemon()"></pagination-controls>
+<!-- <pagination-controls (pageChange)="page = $event; pokemons = []; getPokemon()"></pagination-controls> -->
